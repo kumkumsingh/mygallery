@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import * as request from "superagent";
+import { url } from "./constants";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+   // Component level state to fetch photos from unsplash API.
+   state = {
+    photos: [],
+  };
+  componentDidMount() {
+    // Using GET method getting the photos from unsplash API.
+    request.get(url).then(image => {
+      this.setState({
+        photos: image.body
+      });
+    });
+  }
+  render() {
+    return (
+      <div className="App">
+        <h1>My Gallery</h1>
+        {/* If there is no photos available display loading otherwise display photos  */}
+        {!this.state.photos && "Loading..."}
+        {this.state.photos && (
+          <ul className="grid-image-container">
+            {this.state.photos.map((photo, index) => (
+              <div>
+                <img
+                  key={index}
+                  src={photo.urls.regular}
+                  alt={photo.alt_description}
+                  className="grid-image-item"
+                />
+              </div>
+            ))}
+          </ul>
+          
+        )}
+        
+      </div>
+    )
+  }
 }
-
-export default App;

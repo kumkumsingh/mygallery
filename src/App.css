@@ -1,38 +1,25 @@
+/* css for whole app */
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  color:white;
+  background-color:grey;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+/* grid container for images */
+.grid-image-container {
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: repeat(4, 1fr);
+  padding-inline-start: 10px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* look of image items in gird*/
+.grid-image-item {
+  width: 95%;
+  height: 20rem;
+  display: block;
+  margin: 0px;
+  margin-bottom: 0.5rem;
+  border: 5px solid #222;
+  object-fit: cover;
+  cursor: pointer;
 }
