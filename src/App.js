@@ -4,15 +4,14 @@ import * as request from "superagent";
 import { url } from "./constants";
 import { Button } from "@material-ui/core";
 import Lightbox from "react-image-lightbox";
-import 'react-image-lightbox/style.css';
-
+import "react-image-lightbox/style.css";
 
 export default class App extends Component {
-   // Component level state to store photos from unsplash API.
-   //index is to indicate which image has to be shown in lightbox and when image is clicked isLightBoxOpen becomes true 
-   //and image opens in lightbox .
+  // Component level state to store photos from unsplash API.
+  //index is to indicate which image has to be shown in lightbox and when image is clicked isLightBoxOpen becomes true
+  //and image opens in lightbox .
 
-   state = {
+  state = {
     photos: [],
     index: 0,
     isLightBoxOpen: false
@@ -25,17 +24,17 @@ export default class App extends Component {
       });
     });
   }
-   //onLoadMore arrow function to load more photos
-   onLoadMore = () => {
+  //onLoadMore arrow function to load more photos
+  onLoadMore = () => {
     //requesting unsplash API
     request.get(url).then(image => {
-      //without changing the original state updating the state values 
+      //without changing the original state updating the state values
       this.setState({
         photos: [...this.state.photos, ...image.body]
       });
     });
   };
-// when isLightBoxOpen is true onLightBoxOpen function is called 
+  // when isLightBoxOpen is true onLightBoxOpen function is called
   onLightBoxOpen = index => {
     this.setState({
       index: index,
@@ -62,41 +61,39 @@ export default class App extends Component {
               </div>
             ))}
           </ul>
-          
         )}
         {/* LightBox compoent to display image in lightbox with title of the image 
         close, next, previous, zoom in, zoom out functionality */}
         {this.state.isLightBoxOpen && (
-                  <Lightbox
-                    mainSrc={this.state.photos[this.state.index].urls.regular}
-                    nextSrc={
-                      this.state.photos[
-                        (this.state.index + 1) % this.state.photos.length
-                      ].urls.regular
-                    }
-                    prevSrc={
-                      this.state.photos[
-                        (this.state.index + this.state.photos.length - 1) %
-                          this.state.photos.length
-                      ].urls.regular
-                    }
-                    onCloseRequest={() => this.setState({ isLightBoxOpen: false })}
-                    onMovePrevRequest={() =>
-                      this.setState({
-                        index:
-                          (this.state.index + this.state.photos.length - 1) %
-                          this.state.photos.length
-                      })
-                    }
-                    onMoveNextRequest={() =>
-                      this.setState({
-                        index:
-                          (this.state.index + 1) % this.state.photos.length
-                      })
-                    }
-                    imageTitle={this.state.photos[this.state.index].alt_description}
-                  />
-                )}
+          <Lightbox
+            mainSrc={this.state.photos[this.state.index].urls.regular}
+            nextSrc={
+              this.state.photos[
+                (this.state.index + 1) % this.state.photos.length
+              ].urls.regular
+            }
+            prevSrc={
+              this.state.photos[
+                (this.state.index + this.state.photos.length - 1) %
+                  this.state.photos.length
+              ].urls.regular
+            }
+            onCloseRequest={() => this.setState({ isLightBoxOpen: false })}
+            onMovePrevRequest={() =>
+              this.setState({
+                index:
+                  (this.state.index + this.state.photos.length - 1) %
+                  this.state.photos.length
+              })
+            }
+            onMoveNextRequest={() =>
+              this.setState({
+                index: (this.state.index + 1) % this.state.photos.length
+              })
+            }
+            imageTitle={this.state.photos[this.state.index].alt_description}
+          />
+        )}
         {/* button to load more photos on click event */}
         <div>
           <Button variant="contained" color="primary" onClick={this.onLoadMore}>
@@ -104,6 +101,6 @@ export default class App extends Component {
           </Button>
         </div>
       </div>
-    )
+    );
   }
 }
