@@ -9,8 +9,7 @@ import "react-image-lightbox/style.css";
 export default class App extends Component {
   //photos is an array to store photos from unsplash API.
   //index is to indicate which image has to be shown in lightbox.
-  //When image is clicked isLightBoxOpen becomes true
-  //and image opens in lightbox .
+  //Initially isLightBoxOpen is false and its true only when user click on particular image.
 
   state = {
     photos: [],
@@ -35,7 +34,7 @@ export default class App extends Component {
       });
     });
   };
-  // When an image is clicked, onLightBoxOpen function is called and isLightBoxOpen becomes true, 
+  // When an image is clicked, onLightBoxOpen function is called and isLightBoxOpen becomes true. 
   onLightBoxOpen = index => {
     this.setState({
       index: index,
@@ -63,8 +62,8 @@ export default class App extends Component {
             ))}
           </ul>
         )}
-        {/* LightBox component to display image in lightbox with title of the image 
-        close, next, previous, zoom in, zoom out functionality */}
+        {/* LightBox to display an image in lightbox with the title of the image,
+        close, next, previous, zoom in and zoom out functionality */}
         {this.state.isLightBoxOpen && (
           <Lightbox
             mainSrc={this.state.photos[this.state.index].urls.regular}
