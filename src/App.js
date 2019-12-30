@@ -35,7 +35,7 @@ export default class App extends Component {
       });
     });
   };
-  // when isLightBoxOpen is true, onLightBoxOpen function is called
+  // When an image is clicked, onLightBoxOpen function is called and isLightBoxOpen becomes true, 
   onLightBoxOpen = index => {
     this.setState({
       index: index,
@@ -95,7 +95,7 @@ export default class App extends Component {
             imageTitle={this.state.photos[this.state.index].alt_description}
           />
         )}
-        {/* button to load more photos on click event */}
+        {/* button to load more photos on click of load more */}
         <div>
           <Button variant="contained" color="primary" onClick={this.onLoadMore}>
             Load More
