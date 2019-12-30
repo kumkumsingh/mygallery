@@ -34,7 +34,8 @@ export default class App extends Component {
       });
     });
   };
-  // When an image is clicked, onLightBoxOpen function is called and isLightBoxOpen becomes true. 
+  // When an image is clicked, onLightBoxOpen function is called and 
+  //isLightBoxOpen becomes true and image opens up in lightbox popup. 
   onLightBoxOpen = index => {
     this.setState({
       index: index,
@@ -45,7 +46,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <h1>My Gallery</h1>
-        {/* If there are no photos available, display loading otherwise display photos  */}
+        {/* If there are no photos available, display loading text otherwise display fetched photos  */}
         {!this.state.photos && "Loading..."}
         {this.state.photos && (
           <ul className="grid-image-container">
@@ -94,7 +95,7 @@ export default class App extends Component {
             imageTitle={this.state.photos[this.state.index].alt_description}
           />
         )}
-        {/* button to load more photos on click of load more */}
+        {/* button to load more photos on click of load more button */}
         <div>
           <Button variant="contained" color="primary" onClick={this.onLoadMore}>
             Load More
