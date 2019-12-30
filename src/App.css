@@ -1,18 +1,18 @@
 /* css for whole app */
 .App {
   text-align: center;
-  color:white;
-  background-color:grey;
+  color: white;
+  background-color: grey;
   min-height: 100vh;
 }
-/* 3 images per row on large size screens >960px */
+/* 4 images per row on large size screens >960px */
 .grid-image-container {
   display: grid;
   grid-gap: 0px;
   grid-template-columns: repeat(4, 1fr);
   padding-inline-start: 10px;
 }
-/* look of image items in gird*/
+/* look of image items in grid*/
 .grid-image-item {
   width: 95%;
   height: 20rem;

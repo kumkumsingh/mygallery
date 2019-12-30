@@ -7,8 +7,9 @@ import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 
 export default class App extends Component {
-  // Component level state to store photos from unsplash API.
-  //index is to indicate which image has to be shown in lightbox and when image is clicked isLightBoxOpen becomes true
+  //Component level state to store photos from unsplash API.
+  //The index is to indicate which image has to be shown in lightbox.
+  //When image is clicked isLightBoxOpen becomes true
   //and image opens in lightbox .
 
   state = {
@@ -17,7 +18,7 @@ export default class App extends Component {
     isLightBoxOpen: false
   };
   componentDidMount() {
-    // Using GET method getting the photos from unsplash API.
+    // Using GET method to get the photos from unsplash API.
     request.get(url).then(image => {
       this.setState({
         photos: image.body
@@ -34,7 +35,7 @@ export default class App extends Component {
       });
     });
   };
-  // when isLightBoxOpen is true onLightBoxOpen function is called
+  // when isLightBoxOpen is true, onLightBoxOpen function is called
   onLightBoxOpen = index => {
     this.setState({
       index: index,
@@ -45,7 +46,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <h1>My Gallery</h1>
-        {/* If there is no photos available display loading otherwise display photos  */}
+        {/* If there are no photos available, display loading otherwise display photos  */}
         {!this.state.photos && "Loading..."}
         {this.state.photos && (
           <ul className="grid-image-container">
@@ -62,7 +63,7 @@ export default class App extends Component {
             ))}
           </ul>
         )}
-        {/* LightBox compoent to display image in lightbox with title of the image 
+        {/* LightBox component to display image in lightbox with title of the image 
         close, next, previous, zoom in, zoom out functionality */}
         {this.state.isLightBoxOpen && (
           <Lightbox
