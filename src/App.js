@@ -7,8 +7,8 @@ import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 
 export default class App extends Component {
-  //Component level state to store photos from unsplash API.
-  //The index is to indicate which image has to be shown in lightbox.
+  //photos is an array to store photos from unsplash API.
+  //index is to indicate which image has to be shown in lightbox.
   //When image is clicked isLightBoxOpen becomes true
   //and image opens in lightbox .
 
