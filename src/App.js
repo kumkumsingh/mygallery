@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import "./App.css";
 import * as request from "superagent";
 import { url } from "./constants";
-import { Button } from "@material-ui/core";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
+import  LoadMore  from './components/LoadMore'
 
 export default class App extends Component {
   //photos is an array to store photos from unsplash API.
@@ -95,11 +95,9 @@ export default class App extends Component {
             imageTitle={this.state.photos[this.state.index].alt_description}
           />
         )}
-        {/* button to load more photos on click of load more button */}
+        {/* Sending props to LoadMore Component*/}
         <div>
-          <Button variant="contained" color="primary" onClick={this.onLoadMore}>
-            Load More
-          </Button>
+         <LoadMore onLoadMore={this.onLoadMore}/>
         </div>
       </div>
     );
