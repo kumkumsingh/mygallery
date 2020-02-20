@@ -1,5 +1,5 @@
 //client_id is a developer account access_key and it is required to fetch images from unsplash API
-const client_id = "K-YavDWaYkk4qZwqM14SINgwWI40rjEXP9az3qGzMCA"
+const client_id = "Yourkey"
 
 //This is the basic url to get photos of count 5 and client_id is required to access them from unsplash API.
 // export const url ="https://api.unsplash.com/photos?client_id="+client_id
