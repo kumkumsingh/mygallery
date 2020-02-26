@@ -15,7 +15,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Deployed version of App over netlify
 
-<a>kumkumgallery.netlify.com<a>
+[kumkumgallery.netlify.com]
 
 
 
